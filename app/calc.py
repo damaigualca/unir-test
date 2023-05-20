@@ -31,6 +31,19 @@ class Calculator:
     def power(self, x, y):
         self.check_types(x, y)
         return x ** y
+    
+    # changes 16.05.2023
+    def square_root(self, x):
+        self.check_types(x, 0)
+        if x < 0:
+            raise TypeError("Square root of negative number is not possible")
+        return x ** 0.5
+    
+    def log(self, x, y):
+        self.check_types(x, y)
+        if x <= 0 or y <= 0:
+            raise TypeError("Logarithm of negative number is not possible")
+        return x ** (1/y)
 
     def check_types(self, x, y):
         if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):

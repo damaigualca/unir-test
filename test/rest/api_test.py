@@ -21,3 +21,59 @@ class TestApi(unittest.TestCase):
         self.assertEqual(
             response.status, http.client.OK, f"Error en la petición API a {url}"
         )
+
+    def test_api_subtract(self):
+        url = f"{BASE_URL}/calc/subtract/2/2"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.OK, f"Error en la petición API a {url}"
+        )
+    
+    def test_api_multiply(self):
+        url = f"{BASE_URL}/calc/multiply/2/2"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.OK, f"Error en la petición API a {url}"
+        )
+    
+    def test_api_divide(self):
+        url = f"{BASE_URL}/calc/divide/2/2"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.OK, f"Error en la petición API a {url}"
+        )
+    
+    def test_api_divide_by_zero(self):
+        url = f"{BASE_URL}/calc/divide/2/0"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.INTERNAL_SERVER_ERROR, f"Error en la petición API a {url}"
+        )
+
+    def test_api_power(self):
+        url = f"{BASE_URL}/calc/power/2/2"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.OK, f"Error en la petición API a {url}"
+        )
+    
+    def test_api_square_root(self):
+        url = f"{BASE_URL}/calc/square_root/2"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.OK, f"Error en la petición API a {url}"
+        )
+
+    def test_api_square_root_negative(self):
+        url = f"{BASE_URL}/calc/square_root/-2"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.INTERNAL_SERVER_ERROR, f"Error en la petición API a {url}"
+        )
+
+    def test_api_log(self):
+        url = f"{BASE_URL}/calc/log/2/2"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.OK, f"Error en la petición API a {url}"
+        )
