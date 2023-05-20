@@ -1,5 +1,5 @@
 import app
-
+import math
 
 class InvalidPermissions(Exception):
     pass
@@ -43,7 +43,7 @@ class Calculator:
         self.check_types(x, y)
         if x <= 0 or y <= 0:
             raise TypeError("Logarithm of negative number is not possible")
-        return x ** (1/y)
+        return math.log(x, y)
 
     def check_types(self, x, y):
         if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
@@ -53,4 +53,22 @@ class Calculator:
 if __name__ == "__main__":  # pragma: no cover
     calc = Calculator()
     result = calc.add(2, 2)
+    print(result)
+
+    result = calc.substract(2, 2)
+    print(result)
+
+    result = calc.multiply(2, 2)
+    print(result)
+
+    result = calc.divide(2, 2)
+    print(result)
+
+    result = calc.power(2, 2)
+    print(result)
+
+    result = calc.square_root(4)
+    print(result)
+
+    result = calc.log10(4, 2)
     print(result)
