@@ -61,11 +61,11 @@ class TestApi(unittest.TestCase):
         self.assertEqual(value, 4)
     
     def test_api_square_root(self):
-        url = f"{BASE_URL}/calc/square_root/2"
+        url = f"{BASE_URL}/calc/square_root/4"
         response = urlopen(url, timeout=DEFAULT_TIMEOUT)
         self.assertEqual(response.status, http.client.OK, f"Error en la petición API a {url}")
         value = int(response.read().decode('utf-8'))
-        self.assertEqual(value, 1)
+        self.assertEqual(value, 2)
 
     def test_api_square_root_negative(self):
         url = f"{BASE_URL}/calc/square_root/-2"
