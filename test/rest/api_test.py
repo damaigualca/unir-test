@@ -23,7 +23,7 @@ class TestApi(unittest.TestCase):
         )
 
     def test_api_subtract(self):
-        url = f"{BASE_URL}/calc/subtract/2/2"
+        url = f"{BASE_URL}/calc/substract/2/2"
         response = urlopen(url, timeout=DEFAULT_TIMEOUT)
 
         self.assertEqual(response.status, http.client.OK)
