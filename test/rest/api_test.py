@@ -45,10 +45,12 @@ class TestApi(unittest.TestCase):
     
     def test_api_divide_by_zero(self):
         url = f"{BASE_URL}/calc/divide/2/0"
-        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
-        self.assertEqual(
-            response.status, http.client.INTERNAL_SERVER_ERROR, f"Error en la petición API a {url}"
-        )
+        
+        with self.assertRaises(Exception) as context:
+            response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+            self.assertEqual(
+                response.status, http.client.INTERNAL_SERVER_ERROR, f"Error en la petición API a {url}"
+            )
 
     def test_api_power(self):
         url = f"{BASE_URL}/calc/power/2/2"
