@@ -39,7 +39,7 @@ class Calculator:
             raise TypeError("Square root of negative number is not possible")
         return x ** 0.5
     
-    def log_10(self, x, y):
+    def log10(self, x, y):
         self.check_types(x, y)
         if x <= 0 or y <= 0:
             raise TypeError("Logarithm of negative number is not possible")
