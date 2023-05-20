@@ -55,7 +55,8 @@ class TestApi(unittest.TestCase):
     def test_api_power(self):
         url = f"{BASE_URL}/calc/power/2/2"
         response = urlopen(url, timeout=DEFAULT_TIMEOUT)
-        self.assertEqual(response.read().decode('utf-8'))
+        
+        self.assertEqual(response.status, http.client.OK, f"Error en la petición API a {url}")
         value = int(response.read().decode('utf-8'))
         self.assertEqual(value, 4)
     
