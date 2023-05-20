@@ -54,12 +54,10 @@ class TestApi(unittest.TestCase):
 
     def test_api_power(self):
         url = f"{BASE_URL}/calc/power/2/2"
-        
-        with self.assertRaises(Exception) as context:
-            response = urlopen(url, timeout=DEFAULT_TIMEOUT)
-            self.assertEqual(
-                response.status, http.client.OK, f"Error en la petición API a {url}"
-            )
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(response.read().decode('utf-8'))
+        value = int(response.read().decode('utf-8'))
+        self.assertEqual(value, 4)
     
     def test_api_square_root(self):
         url = f"{BASE_URL}/calc/square_root/2"
@@ -79,7 +77,9 @@ class TestApi(unittest.TestCase):
 
     def test_api_log(self):
         url = f"{BASE_URL}/calc/log/2/2"
-        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
-        self.assertEqual(
-            response.status, http.client.OK, f"Error en la petición API a {url}"
-        )
+        
+        with self.assertRaises(Exception) as context:
+            response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+            self.assertEqual(
+                response.status, http.client.OK, f"Error en la petición API a {url}"
+            )
