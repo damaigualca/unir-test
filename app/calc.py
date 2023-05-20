@@ -40,7 +40,7 @@ class Calculator:
         return x ** 0.5
     
     def log10(self, x):
-        self.check_types(x)
+        self.check_types(x, 0)
         # only positive numbers
         if x < 0:
             raise TypeError("Logarithm of negative number is not possible")
@@ -71,5 +71,5 @@ if __name__ == "__main__":  # pragma: no cover
     result = calc.square_root(4)
     print(result)
 
-    result = calc.log10(4, 2)
+    result = calc.log10(100)
     print(result)
