@@ -40,7 +40,7 @@ class Calculator:
         return x ** 0.5
     
     def log10(self, x):
-        self.check_types(x, y)
+        self.check_types(x)
         # only positive numbers
         if x < 0:
             raise TypeError("Logarithm of negative number is not possible")
