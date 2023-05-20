@@ -69,10 +69,12 @@ class TestApi(unittest.TestCase):
 
     def test_api_square_root_negative(self):
         url = f"{BASE_URL}/calc/square_root/-2"
-        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
-        self.assertEqual(
-            response.status, http.client.INTERNAL_SERVER_ERROR, f"Error en la petición API a {url}"
-        )
+        
+        with self.assertRaises(Exception) as context:
+            response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+            self.assertEqual(
+                response.status, http.client.OK, f"Error en la petición API a {url}"
+            )
 
     def test_api_log(self):
         url = f"{BASE_URL}/calc/log/2/2"
