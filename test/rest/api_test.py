@@ -25,9 +25,10 @@ class TestApi(unittest.TestCase):
     def test_api_subtract(self):
         url = f"{BASE_URL}/calc/subtract/2/2"
         response = urlopen(url, timeout=DEFAULT_TIMEOUT)
-        self.assertEqual(
-            response.status, http.client.OK, f"Error en la petición API a {url}"
-        )
+        
+        self.assertEqual(response.status, http.client.OK, f"Error en la petición API a {url}")
+        value = int(response.read().decode("utf-8"))
+        self.assertEqual(value, 0, f"Error en la petición API a {url}")
     
     def test_api_multiply(self):
         url = f"{BASE_URL}/calc/multiply/2/2"
