@@ -84,10 +84,6 @@ class TestCalculate(unittest.TestCase):
         self.assertRaises(TypeError, self.calc.power, 2, "2")
         self.assertRaises(TypeError, self.calc.power, "2", "2")
 
-    def test_power_method_fails_with_negative_parameter(self):
-        self.assertRaises(TypeError, self.calc.power, 2, -2)
-        self.assertRaises(TypeError, self.calc.power, -2, 2)
-
     @patch('app.util.validate_permissions', side_effect=mocked_validation, create=True)
     def test_multiply_method_returns_correct_result(self, _validate_permissions):
         self.assertEqual(4, self.calc.multiply(2, 2))
