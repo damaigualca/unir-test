@@ -31,7 +31,7 @@ class Calculator:
 
     def power(self, x, y):
         self.check_types(x, y)
-        return math.pow(x, y)
+        return x ** y
     
     # changes 16.05.2023
     def square_root(self, x):
