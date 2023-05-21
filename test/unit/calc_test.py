@@ -33,19 +33,19 @@ class TestCalculate(unittest.TestCase):
         self.assertRaises(TypeError, self.calc.add, 2, object())
 
     def test_substract_method_returns_correct_result(self):
-        self.assertEqual(0, self.calc.subtract(2, 2))
-        self.assertEqual(4, self.calc.subtract(2, -2))
-        self.assertEqual(-4, self.calc.subtract(-2, 2))
-        self.assertEqual(1, self.calc.subtract(1, 0))
+        self.assertEqual(0, self.calc.substract(2, 2))
+        self.assertEqual(4, self.calc.substract(2, -2))
+        self.assertEqual(-4, self.calc.substract(-2, 2))
+        self.assertEqual(1, self.calc.substract(1, 0))
 
     def test_substract_method_fails_with_nan_parameter(self):
-        self.assertRaises(TypeError, self.calc.subtract, "2", 2)
-        self.assertRaises(TypeError, self.calc.subtract, 2, "2")
-        self.assertRaises(TypeError, self.calc.subtract, "2", "2")
-        self.assertRaises(TypeError, self.calc.subtract, None, 2)
-        self.assertRaises(TypeError, self.calc.subtract, 2, None)
-        self.assertRaises(TypeError, self.calc.subtract, object(), 2)
-        self.assertRaises(TypeError, self.calc.subtract, 2, object())
+        self.assertRaises(TypeError, self.calc.substract, "2", 2)
+        self.assertRaises(TypeError, self.calc.substract, 2, "2")
+        self.assertRaises(TypeError, self.calc.substract, "2", "2")
+        self.assertRaises(TypeError, self.calc.substract, None, 2)
+        self.assertRaises(TypeError, self.calc.substract, 2, None)
+        self.assertRaises(TypeError, self.calc.substract, object(), 2)
+        self.assertRaises(TypeError, self.calc.substract, 2, object())
 
     def test_divide_method_returns_correct_result(self):
         self.assertEqual(1, self.calc.divide(2, 2))
