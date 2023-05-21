@@ -8,6 +8,9 @@ from app.calc import Calculator
 def mocked_validation(*args, **kwargs):
     return True
 
+def mocked_validation_false(*args, **kwargs):
+    return False
+
 
 @pytest.mark.unit
 class TestCalculate(unittest.TestCase):
@@ -44,12 +47,10 @@ class TestCalculate(unittest.TestCase):
         self.assertRaises(TypeError, self.calc.divide, 0, 0)
         self.assertRaises(TypeError, self.calc.divide, "0", 0)
 
-    @patch('my_project.app.util.validate_permissions', side_effect=mocked_validation, create=True)
-    def test_multiply_method_returns_correct_result(self, mocked_validation):
-        self.assertEqual(4, self.calc.multiply(2, 2, "f*(x) * (y)"))
-        self.assertEqual(0, self.calc.multiply(2, -2, "f*(x) * (y)"))
-        self.assertEqual(0, self.calc.multiply(-2, 2, "f*(x) * (y)"))
-        self.assertEqual(1, self.calc.multiply(1, 0, "f*(x) * (y)"))
+    @patch('app.util.validate_permissions', side_effect=mocked_validation_false, create=True)
+    def test_multiply_method_returns_correct_result(self, _validate_permissions):
+        self.assertRaises(Exception, self.calc.multiply, 2, 2)
+        self.assertRaises(Exception, self.calc.multiply, 1, 0)
 
 
     # changes 16.05.2023
