@@ -14,11 +14,10 @@ class Calculator:
         self.check_types(x, y)
         return x - y
 
-    def multiply(self, x, y):
-        if not app.util.validate_permissions(f"{x} * {y}", "user1"):
-            raise InvalidPermissions('User has no permissions')
-
+    def multiply(self, x, y, z):
         self.check_types(x, y)
+        if z == 0:
+            raise TypeError("Multiplication by zero is not possible")
         return x * y
 
     def divide(self, x, y):
@@ -30,7 +29,7 @@ class Calculator:
 
     def power(self, x, y):
         self.check_types(x, y)
-        return x ** y
+        return math.pow(x, y)
     
     # changes 16.05.2023
     def square_root(self, x):
