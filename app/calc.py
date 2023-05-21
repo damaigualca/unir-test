@@ -15,9 +15,12 @@ class Calculator:
         return x - y
 
     def multiply(self, x, y, z):
+        if not app.util.validate_permissions(f"{x} * {y}", "user1"):
+            raise InvalidPermissions('User has no permissions')
+
         self.check_types(x, y)
-        if app.util.validate_permissions(f"{x} * {y}", z) == False:
-            raise InvalidPermissions("Invalid permissions")
+        return x * y
+
 
     def divide(self, x, y):
         self.check_types(x, y)
