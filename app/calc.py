@@ -16,9 +16,8 @@ class Calculator:
 
     def multiply(self, x, y, z):
         self.check_types(x, y)
-        if z == 0:
-            raise TypeError("Multiplication by zero is not possible")
-        return x * y
+        if app.validate_permissions("f*(x) * (y)", z) == False:
+            raise InvalidPermissions("Invalid permissions")
 
     def divide(self, x, y):
         self.check_types(x, y)
