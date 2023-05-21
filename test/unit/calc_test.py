@@ -47,10 +47,12 @@ class TestCalculate(unittest.TestCase):
         self.assertRaises(TypeError, self.calc.divide, 0, 0)
         self.assertRaises(TypeError, self.calc.divide, "0", 0)
 
-    @patch('app.util.validate_permissions', side_effect=mocked_validation_false, create=True)
+    @patch('app.util.validate_permissions', side_effect=mocked_validation, create=True)
     def test_multiply_method_returns_correct_result(self, _validate_permissions):
-        self.assertRaises(Exception, self.calc.multiply, 2, 2)
-        self.assertRaises(Exception, self.calc.multiply, 1, 0)
+        self.assertEqual(4, self.calc.multiply(2, 2))
+        self.assertEqual(0, self.calc.multiply(1, 0))
+        self.assertEqual(0, self.calc.multiply(-1, 0))
+        self.assertEqual(-2, self.calc.multiply(-1, 2))
 
 
     # changes 16.05.2023
