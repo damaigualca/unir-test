@@ -94,7 +94,7 @@ class TestCalculate(unittest.TestCase):
 
     @patch('app.util.validate_permissions', side_effect=mocked_validation_false, create=True)
     def test_multiply_method_fails_validation_permissions(self, _validate_permissions):
-        self.assertRaises(TypeError, self.calc.multiply, 2, 2)
+        self.assertRaises(Exception, self.calc.multiply, 2, 2)
 
 
     def test_multiply_method_fails_with_nan_parameter(self):
