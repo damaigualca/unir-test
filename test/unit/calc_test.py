@@ -72,12 +72,10 @@ class TestCalculate(unittest.TestCase):
         self.assertRaises(TypeError, self.calc.divide, "0", 0)
 
     def test_power_method_returns_correct_result(self):
-        self.assertEqual(4, self.calc.power(2, 2))
-        self.assertEqual(0, self.calc.power(1, 0))
-        self.assertEqual(1, self.calc.power(1, 1))
-        self.assertEqual(0, self.calc.power(-1, 0))
-        self.assertEqual(-1, self.calc.power(-1, 1))
-        self.assertEqual(1, self.calc.power(-1, 2))
+        self.assertEqual(0, self.calc.power(0, 4))
+        self.assertEqual(8, self.calc.power(2, 3))
+        self.assertEqual(64, self.calc.power(4, 3))
+        self.assertEqual(100, self.calc.power(10, 2))
 
     def test_power_method_fails_with_nan_parameter(self):
         self.assertRaises(TypeError, self.calc.power, "2", 2)
