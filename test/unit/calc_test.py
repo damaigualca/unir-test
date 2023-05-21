@@ -23,6 +23,30 @@ class TestCalculate(unittest.TestCase):
         self.assertEqual(0, self.calc.add(-2, 2))
         self.assertEqual(1, self.calc.add(1, 0))
 
+    def test_add_method_fails_with_nan_parameter(self):
+        self.assertRaises(TypeError, self.calc.add, "2", 2)
+        self.assertRaises(TypeError, self.calc.add, 2, "2")
+        self.assertRaises(TypeError, self.calc.add, "2", "2")
+        self.assertRaises(TypeError, self.calc.add, None, 2)
+        self.assertRaises(TypeError, self.calc.add, 2, None)
+        self.assertRaises(TypeError, self.calc.add, object(), 2)
+        self.assertRaises(TypeError, self.calc.add, 2, object())
+
+    def test_subtract_method_returns_correct_result(self):
+        self.assertEqual(0, self.calc.subtract(2, 2))
+        self.assertEqual(4, self.calc.subtract(2, -2))
+        self.assertEqual(-4, self.calc.subtract(-2, 2))
+        self.assertEqual(1, self.calc.subtract(1, 0))
+
+    def test_subtract_method_fails_with_nan_parameter(self):
+        self.assertRaises(TypeError, self.calc.subtract, "2", 2)
+        self.assertRaises(TypeError, self.calc.subtract, 2, "2")
+        self.assertRaises(TypeError, self.calc.subtract, "2", "2")
+        self.assertRaises(TypeError, self.calc.subtract, None, 2)
+        self.assertRaises(TypeError, self.calc.subtract, 2, None)
+        self.assertRaises(TypeError, self.calc.subtract, object(), 2)
+        self.assertRaises(TypeError, self.calc.subtract, 2, object())
+
     def test_divide_method_returns_correct_result(self):
         self.assertEqual(1, self.calc.divide(2, 2))
         self.assertEqual(1.5, self.calc.divide(3, 2))
