@@ -80,14 +80,14 @@ class TestApi(unittest.TestCase):
             )
 
     def test_test_api_log10_invalid_parameter(self):        
-        url = f"{BASE_URL}/calc/log/yy"
+        url = f"{BASE_URL}/calc/log10/yy"
         
         with self.assertRaises(HTTPError) as cm:
             urlopen(url, timeout=DEFAULT_TIMEOUT)
         self.assertEqual(cm.exception.code, 400)
 
     def test_test_api_log10_negative_parameter(self):        
-        url = f"{BASE_URL}/calc/log/-100"
+        url = f"{BASE_URL}/calc/log10/-100"
         
         with self.assertRaises(HTTPError) as cm:
             urlopen(url, timeout=DEFAULT_TIMEOUT)

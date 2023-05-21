@@ -65,7 +65,7 @@ def square_root(op_1):
     except TypeError as e:
         return (str(e), http.client.BAD_REQUEST, HEADERS)
     
-@api_application.route("/calc/log/<op_1>", methods=["GET"])
+@api_application.route("/calc/log10/<op_1>", methods=["GET"])
 def log10(op_1):
     try:
         num_1 = util.convert_to_number(op_1)
