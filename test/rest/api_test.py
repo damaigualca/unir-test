@@ -2,6 +2,8 @@ import http.client
 import os
 import unittest
 from urllib.request import urlopen
+from urllib.error import HTTPError
+
 
 import pytest
 
@@ -77,11 +79,16 @@ class TestApi(unittest.TestCase):
                 response.status, http.client.OK, f"Error en la petición API a {url}"
             )
 
-    def test_api_log(self):
-        url = f"{BASE_URL}/calc/log/2/2"
+    def test_test_api_log10_invalid_parameter(self):        
+        url = f"{BASE_URL}/calc/log10/yy"
         
-        with self.assertRaises(Exception) as context:
-            response = urlopen(url, timeout=DEFAULT_TIMEOUT)
-            self.assertEqual(
-                response.status, http.client.OK, f"Error en la petición API a {url}"
-            )
+        with self.assertRaises(HTTPError) as cm:
+            urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(cm.exception.code, 400)
+
+    def test_test_api_log10_negative_parameter(self):        
+        url = f"{BASE_URL}/calc/log10/-100"
+        
+        with self.assertRaises(HTTPError) as cm:
+            urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(cm.exception.code, 400)
