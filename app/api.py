@@ -65,10 +65,10 @@ def square_root(op_1):
     except TypeError as e:
         return (str(e), http.client.BAD_REQUEST, HEADERS)
     
-@api_application.route("/calc/log/<op_1>/<op_2>", methods=["GET"])
-def log(op_1, op_2):
+@api_application.route("/calc/log/<op_1>", methods=["GET"])
+def log(op_1):
     try:
-        num_1, num_2 = util.convert_to_number(op_1), util.convert_to_number(op_2)
-        return ("{}".format(CALCULATOR.log(num_1, num_2)), http.client.OK, HEADERS)
+        num_1 = util.convert_to_number(op_1)
+        return ("{}".format(CALCULATOR.log(num_1)), http.client.OK, HEADERS)
     except TypeError as e:
         return (str(e), http.client.BAD_REQUEST, HEADERS)
