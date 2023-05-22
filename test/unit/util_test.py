@@ -23,4 +23,6 @@ class TestUtil(unittest.TestCase):
         self.assertRaises(TypeError, util.convert_to_number, None)
         self.assertRaises(TypeError, util.convert_to_number, object())
 
-
+    def test_convert_to_number_invalid_value(self):
+        self.assertRaises(ValueError, util.convert_to_number, "3.3.3")
+        self.assertRaises(ValueError, util.convert_to_number, "2.h")
